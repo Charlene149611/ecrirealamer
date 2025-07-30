@@ -1,0 +1,62 @@
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../api/api";
+
+const schema = z.object({
+  username: z.string().min(3, "Le nom doit comporter au moins 3 lettres"),
+  email: z.email("Email invalide"),
+  password: z
+    .string()
+    .min(6, "Le mot de passe doit contenir au moins 6 caractères"),
+});
+
+const Register = () => {
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = async (data) => {
+    try {
+      await api.post("/auth/register", data);
+      navigate("/login");
+    } catch (error) {
+      console.error("Erreur lors de l'inscription :", error);
+      alert("Une erreur est survenue lors de l'inscription.");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        type="text"
+        {...register("username")}
+        placeholder="Nom d'utilisateur"
+      />
+      {errors.username && <p>{errors.username.message}</p>}
+
+      <input type="email" {...register("email")} placeholder="Email" />
+      {errors.email && <p>{errors.email.message}</p>}
+
+      <input
+        type="password"
+        {...register("password")}
+        placeholder="Mot de passe"
+      />
+      {errors.password && <p>{errors.password.message}</p>}
+
+      <button type="submit" disabled={isSubmitting}>
+        S'inscrire
+      </button>
+    </form>
+  );
+};
+
+export default Register;
