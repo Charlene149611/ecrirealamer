@@ -1,10 +1,9 @@
-// C'est notre Hook pour accéder facilment aux context d'authentification
+// C'est notre Hook pour accéder facilement aux context d'authentification
 
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 
-// On va retourner directement les valeurs des contexte AuthContext (token, setToken ) sans passer par des propos de M
-
+// Ce hook donne accès à toutes les valeurs du contexte (token, user, setToken, setUser, logout)
 export default function useAuth() {
-    return useContext(AuthContext)
+  return useContext(AuthContext);
 }

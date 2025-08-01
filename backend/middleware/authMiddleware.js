@@ -18,6 +18,7 @@ export const verifyToken = (req, res, next) => {
     req.user = decoded; // On stocke les infos du token dans req.user
     next();
   } catch (error) {
+    console.error("Erreur de vérification du token :", error);
     return res.status(401).json({ message: "Token invalide ou expiré." });
   }
 };

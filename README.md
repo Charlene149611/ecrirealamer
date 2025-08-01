@@ -1,3 +1,30 @@
+# Écrire à la mer
+
+## 1. Présentation du projet
+
+Écrire à la mer est une application web permettant aux utilisateurs d’écrire, conserver et partager des pensées sous forme de lettres ou messages. L’accent est mis sur une expérience intime et sécurisée.
+
+## 2. Structure du projet
+
+/backend # Serveur Node.js (Express) avec MongoDB + MySQL
+/frontend # Application React avec routing, auth context, hooks, pages
+/src # Code source frontend
+/api # Gestion des appels API
+/auth # Context et hooks d'authentification
+/components # Composants réutilisables (Navbar, Logout, etc.)
+/pages # Pages principales (Login, Register, Profil, Home)
+
+## 3. Objectifs
+
+- Authentification sécurisée avec JWT  
+- Gestion des profils utilisateur  
+- Gestion des rôles (admin, user)  
+- CRUD des lettres et pensées (à venir)  
+- Interface simple, fluide et responsive  
+
+## 4. Installation et démarrage
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

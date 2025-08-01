@@ -4,13 +4,21 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "../api/api";
 
-const schema = z.object({
-  username: z.string().min(3, "Le nom doit comporter au moins 3 lettres"),
-  email: z.email("Email invalide"),
-  password: z
-    .string()
-    .min(6, "Le mot de passe doit contenir au moins 6 caractères"),
-});
+// Définition du schéma de validation avec Zod
+
+const schema = z
+  .object({
+    username: z.string().min(3, "Le nom doit comporter au moins 3 lettres"),
+    email: z.email("Email invalide"),
+    password: z
+      .string()
+      .min(6, "Le mot de passe doit contenir au moins 6 caractères"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Les mots de passe ne correspondent pas",
+  });
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,9 +31,16 @@ const Register = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
+    // on retire confirmPassword pour ne pas l'envoyer au backend
+    const dataToSend = {
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    };
+
     try {
-      await api.post("/auth/register", data);
+      await api.post("/auth/register", dataToSend);
       navigate("/login");
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
@@ -51,6 +66,13 @@ const Register = () => {
         placeholder="Mot de passe"
       />
       {errors.password && <p>{errors.password.message}</p>}
+
+      <input
+        type="password"
+        {...register("confirmPassword")}
+        placeholder="Confirmez le mot de passe"
+      />
+      {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
 
       <button type="submit" disabled={isSubmitting}>
         S'inscrire

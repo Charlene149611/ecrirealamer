@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import entryRoutes from "./routes/entryRoutes.js";
 import ritualRoutes from "./routes/ritualRoutes.js";
+import cors from "cors";
 
 const app = express();
 
@@ -28,6 +29,8 @@ async function startServer() {
     });
 
     // middleware & routes
+    app.use(cors({ origin: "http://localhost:5173", credentials: true })); // Autoriser les requêtes CORS depuis le frontend
+
     app.use(express.json());
     app.use("/auth", authRoutes);
     app.use("/users", userRoutes);

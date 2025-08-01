@@ -29,6 +29,7 @@ export const updateUser = async (req, res) => {
 
     res.status(200).json(updatedUser);
   } catch (error) {
+    console.error("Erreur lors de la mise à jour de l'utilisateur :", error);
     res.status(500).json({ message: "Erreur lors de la mise à jour de l'utilisateur." });
   }
 };
@@ -42,6 +43,7 @@ export const deleteUser = async (req, res) => {
     }
     res.status(200).json({ message: "Utilisateur supprimé avec succès." });
   } catch (error) {
+    console.error("Erreur lors de la suppression de l'utilisateur :", error);
     res.status(500).json({ message: "Erreur lors de la suppression de l'utilisateur." });
   }
 };
@@ -52,6 +54,7 @@ export const getAllUsers = async (req, res) => {
     const users = await User.find().select("-passwordHash");
     res.status(200).json(users);
   } catch (error) {
+    console.error("Erreur lors de la récupération des utilisateurs :", error);
     res.status(500).json({ message: "Erreur lors de la récupération des utilisateurs." });
   }
 };
