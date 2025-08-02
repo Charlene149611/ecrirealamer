@@ -93,6 +93,7 @@ Tester les endpoints avec token JWT dans header Authorization: Bearer <token>
 
 
 ## Middleware
+
 verifyToken : vérifie la validité du token JWT
 
 hasRole(role) : vérifie le rôle utilisateur

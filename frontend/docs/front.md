@@ -117,16 +117,33 @@ Hooks auth : useAuth, AuthProvider
 
 ## Tests
 
-Tester l’inscription avec formulaire
+Inscription via formulaire, vérifier en base MongoDB
 
-Connexion et redirection vers /dashboard
+Connexion, vérifier token stocké localStorage + contexte
 
-Vérifier affichage conditionnel dans Navbar
+Accès au profil, vérifier affichage infos utilisateur
 
-Déconnexion supprime le token et redirige
+Bouton déconnexion, vérifier suppression token + redirection
 
-## Configuration de Tailwindcss pour un style doux et symbolique
+Protection des routes privées
 
+## Fonctionnalités frontend
+AuthContext + AuthProvider pour gérer token et utilisateur
+
+Hook personnalisé useAuth pour accéder au contexte
+
+Formulaires Login et Register avec validation
+
+Stockage sécurisé du token et user dans localStorage
+
+Navbar dynamique selon statut connecté
+
+Protection des routes privées (profil/dashboard)
+
+Déconnexion efficace avec suppression du token
+
+## Configuration de Tailwindcss pour un style doux et symbolique (?)
+ 
 ### 1. Fichier `tailwind.config.js`
 
 ```js

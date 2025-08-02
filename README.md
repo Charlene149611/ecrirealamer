@@ -75,7 +75,30 @@ cd frontend
 npm install
 npm run dev
 
-## 5. 
+Voici les commandes GitHub/Git courantes pour initialiser et gérer votre dépôt :
+
+```bash
+# Initialiser un nouveau dépôt Git
+git init
+
+# Vérifier le statut des fichiers
+git status
+
+# Ajouter des fichiers à l’index (staging area)
+git add .
+
+# Enregistrer les modifications avec un message de commit
+git commit -m "Votre message de commit"
+
+# Ajouter la remote (remplacer par l’URL de votre dépôt)
+git remote add origin https://github.com/votre-utilisateur/votre-repo.git
+
+# Envoyer les commits vers la branche principale sur GitHub
+git push -u origin main
+
+# Récupérer les dernières modifications du dépôt distant
+git pull
+```
 
 
 # React + Vite
