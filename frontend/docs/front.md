@@ -1,28 +1,39 @@
 ## Structure du dossier frontend
 
-src/
-├── auth/
-│   ├── AuthContext.jsx
-│   ├── AuthProvider.jsx
-│   └── useAuth.jsx
-│
-├── components/
-│   └── Navbar.jsx
-│
-├── pages/ 
-│   ├── Home.jsx
-│   ├── Login.jsx
-│   ├── Register.jsx
-│   └── Profil.jsx
-│
-├── App.jsx
-├── App.css
-├── index.css
-└── main.jsx
-
-index.html à la racine
+frontend/
+├── docs/
+│   └── front.md
+├── src/
+│   ├── api/
+│   │   └── api.js
+│   │
+│   ├── auth/
+│   │   ├── AuthContext.jsx
+│   │   ├── AuthProvider.jsx
+│   │   └── useAuth.jsx
+│   │
+│   ├── components/
+│   │   └── Navbar.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   └── Profil.jsx
+│   │
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── eslint.config.js
+├── package.json
+├── package-lock.json
+└── vite.config.js
 
 ## Cette structure permet de :
+
+api/ : permet de faire le lien entre le backend et le frontend
 
 pages/ : regroupe toutes les vues accessibles via des routes
 
@@ -86,6 +97,33 @@ npm install
 4. Installation des dépendances supplémentaires utiles
 
 npm install axios react-hook-form zod @hookform/resolvers react-router-dom prop-types
+
+5. Pages
+
+/login : connexion
+
+/register : inscription
+
+/dashboard (profil) : page utilisateur protégée
+
+/ : page d’accueil
+
+Composants clés
+Navbar : navigation + déconnexion
+
+Logout : bouton de déconnexion
+
+Hooks auth : useAuth, AuthProvider
+
+## Tests
+
+Tester l’inscription avec formulaire
+
+Connexion et redirection vers /dashboard
+
+Vérifier affichage conditionnel dans Navbar
+
+Déconnexion supprime le token et redirige
 
 ## Configuration de Tailwindcss pour un style doux et symbolique
 

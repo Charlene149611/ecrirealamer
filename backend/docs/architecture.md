@@ -1,5 +1,41 @@
 # Architecture du projet : Écrire à la mer
 
+## Struxture du projet
+
+```
+backend/
+├── config/
+│   ├── db.js
+│   ├── db_mysql.js
+│   └── roles.js
+├── controllers/
+│   ├── authController.js
+│   ├── entryController.js
+│   ├── ritualController.js
+│   └── userController.js
+├── docs/
+│   └── architecture.md
+├── middleware/
+│   └── authMiddleware.js
+├── models/
+│   ├── Archive.js
+│   ├── Bottle.js
+│   ├── Entry.js
+│   ├── Ritual.js
+│   └── User.js
+├── routes/
+│   ├── authRoutes.js
+│   ├── entryRoutes.js
+│   ├── ritualRoutes.js
+│   └── userRoutes.js
+├── .env
+├── .gitignore
+├── package.json
+├── server.js
+├── package-lock.json
+
+```
+
 ## Bases de données utilisées
 
 - **MongoDB** : pour les données souples, narratives, personnelles, liées à l’expression et aux utilisateurs.  
@@ -38,4 +74,28 @@
 - MySQL = **métadonnées**, logs, administration.
 
 ---
+
+## Tests
+
+Utiliser postman
+Tester les endpoints avec token JWT dans header Authorization: Bearer <token>
+
+## Routes principales
+
+| Méthode | Endpoint         | Description                      | Protection           |
+|---------|------------------|----------------------------------|----------------------|
+| POST    | /auth/register   | Inscription                      | Public               |
+| POST    | /auth/login      | Connexion                        | Public               |
+| POST    | /auth/logout     | Déconnexion (optionnel)          | Public               |
+| GET     | /users/:id       | Récupérer profil utilisateur     | Protégé (token)      |
+| PUT     | /users/:id       | Mise à jour profil utilisateur   | Protégé (token)      |
+| DELETE  | /users/:id       | Suppression utilisateur (admin)  | Protégé + admin      |
+
+
+## Middleware
+verifyToken : vérifie la validité du token JWT
+
+hasRole(role) : vérifie le rôle utilisateur
+
+
 

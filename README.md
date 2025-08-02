@@ -14,15 +14,68 @@
 /components # Composants réutilisables (Navbar, Logout, etc.)
 /pages # Pages principales (Login, Register, Profil, Home)
 
+```
+├── backend
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── config
+│   └── server.js
+├── frontend
+│   ├── src
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── main.jsx
+│   │   ├── api
+│   │   ├── auth
+│   │   ├── components
+│   │   └── pages
+│   ├── public
+│   └── index.html
+├── .gitignore
+└── README.md
+```
+
+Pour plus de détails sur l’architecture du backend, veuillez consulter le fichier [backend/docs/architecture.md](backend/docs/architecture.md).
+
+Pour plus d’informations sur l’architecture du frontend, veuillez consulter le fichier [frontend/docs/front.md](frontend/docs/front.md).
+
 ## 3. Objectifs
 
 - Authentification sécurisée avec JWT  
 - Gestion des profils utilisateur  
 - Gestion des rôles (admin, user)  
 - CRUD des lettres et pensées (à venir)  
-- Interface simple, fluide et responsive  
+- Interface simple, fluide et responsive 
+- Interface accessible (à venir)
 
 ## 4. Installation et démarrage
+
+### Prérequis  
+- Node.js et npm  
+- MongoDB (en local ou cloud)  
+- MySQL (configuré)  
+- Fichier `.env` (voir section Variables d'environnement) 
+
+### Pour plus de détails (architecture | installation | endpoints)
+
+Pour plus de détails sur l’installation du backend, veuillez consulter le fichier [docs/backend/architecture.md](docs/backend/architecture.md).
+
+Pour plus d’informations sur l’installation et le démarrage du frontend, veuillez consulter le fichier [docs/front.md](docs/front.md).
+
+### Lancer le backend  
+```bash
+cd backend
+npm install
+node server.js || nodemon server.js || npm run dev
+
+### Lancer le frontend
+```bash
+cd frontend
+npm install
+npm run dev
+
+## 5. 
 
 
 # React + Vite
