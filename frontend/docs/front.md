@@ -97,6 +97,7 @@ npm install
 4. Installation des dépendances supplémentaires utiles
 
 npm install axios react-hook-form zod @hookform/resolvers react-router-dom prop-types
+npm install serve --save-dev
 
 5. Pages
 
@@ -128,6 +129,7 @@ Bouton déconnexion, vérifier suppression token + redirection
 Protection des routes privées
 
 ## Fonctionnalités frontend
+
 AuthContext + AuthProvider pour gérer token et utilisateur
 
 Hook personnalisé useAuth pour accéder au contexte
